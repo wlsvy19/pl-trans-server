@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<bean id="methodNameResolver" class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+		<property name="paramName">
+			<value>cmd</value>
+		</property>
+		<property name="defaultMethodName">
+			<value>runvoid</value>
+		</property>
+	</bean>
+	
+	<bean id="restController" class="com.eBrother.baas.common.control.RestController">
+		<property name="restService" ref="restService" />
+		<property name="methodNameResolver" ref="methodNameResolver" />
+	</bean>
+
+	<bean id="restService" class="com.eBrother.baas.common.service.impl.RestServiceImpl">
+		<property name="restDAO">
+			<ref local="restDAO"/>
+		</property>	
+	</bean>
+	
+	<bean id="restDAO" class="com.eBrother.baas.common.dao.impl.RestDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="restDAOSqlMapClient" />
+		</property>
+	</bean>	
+
+	<bean id="lobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler" lazy-init="true" />
+ 	<bean id="restDAOSqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocations">
+            <list>
+                <value>WEB-INF/config/sqlmap_trans.xml</value> 
+            </list>
+        </property>	 
+		<property name="dataSource" ref="dataSource"/> 
+		<property name="lobHandler" ref="lobHandler"/>    
+	</bean>
+
+		
+</beans>
+

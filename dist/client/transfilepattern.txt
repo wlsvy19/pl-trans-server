@@ -1,0 +1,89 @@
+# 1st  : pattern
+# 2nd : date delimiter
+# 3rd : # of date column.
+##        if 3rd is F, then set last file modifed time. by yyyyMMddHHmmss
+## 4th : 
+# 5th : date format - JAVA simpleFormat 형식
+##	// SimpleDateFormat fmt2 = new SimpleDateFormat("HHmmss");
+##  // SimpleDateFormat fmt3 = new SimpleDateFormat("yyyy/MM/dd");
+## 201 --> 2012 ~ 2019 년. 이것을 넘어설 가능성이 있을까요 ? 와 ... 우리 시스템 대단하네.
+## 6th : 기본 로그에서는, 시간으로 바꾼 것에서 몇 번째를 substring 할 건지 결정하는 것이 필요하다. 자르기 위해서 사용한다.
+## 7th : realtime OR batch
+## realtime - line 이 늘어나면, 실시간으로 전송한다. batch : batch 로 처리한다. 즉, file update 가 종료되면 처리한다.
+## 8th : instance 이름. instance 별로 별로도 관리하고 싶을 때 사용함.
+## 9th : 삭제 여부. 8 이 Y 이며 전송 후 삭제. 정상일 경우만.
+
+## ebrother log 기본 format. 사이트에 따라서 하나만 올려야 합니다.
+## case1. 10 분 단위 생성. 20131519215000_size.log --> 10 분 단위 처리할 경우. 분초 부분이  10 분 단위 하위 부분이 000 임.
+## fulldate 는 14자리. 이중 10 분 단위로 끊으면, 11 자리가지 끊어 진다.
+^201[2-9][0-2][0-9][0-5][0-9](.*?)_(.*?).log$,_,1,,yyyyMMdd,12,Y,,Y
+^201[2-9][0-2][0-9][0-5][0-9](.*?)_(.*?).php$,_,1,,yyyyMMdd,12,Y,,Y
+^201[2-9][0-2][0-9][0-5][0-9](.*?)_(.*?).req$,_,1,,yyyyMMdd,12,Y,,Y
+
+
+## case2. 1 시간 단위 생성. 20131519210000_size.log --> 분초 부분이 0000 임.
+## fulldate 는 14자리. 이중 10 분 단위로 끊으면, 10 자리가지 끊어 진다.ㄱ
+# ^201[2-9][0-2][0-9][0-5][0-9](.*?)_(.*?).log$,_,1,,yyyyMMdd,10,Y,,Y
+
+## case3. 1 분  단위 생성. 20131519215900_size.log --> 분초 부분이  00 임.
+# ^201[2-9][0-2][0-9][0-5][0-9](.*?)_(.*?).log$,_,1,,yyyyMMdd,12,Y,,Y
+
+^access.log_201[2-9][0-1][0-9][0-3][0-9]$,_,2,,yyyyMMdd,yyyyMMdd,N,
+^access_bmis.log_201[2-9][0-1][0-9][0-3][0-9]$,_,2,,yyyyMMdd,yyyyMMdd,N,
+^access_bmisdev.log_201[2-9][0-1][0-9][0-3][0-9]$,_,2,,yyyyMMdd,yyyyMMdd,N,
+^access_cmis.log_201[2-9][0-1][0-9][0-3][0-9]$,_,2,,yyyyMMdd,yyyyMMdd,N,
+^access_cmisdev.log_201[2-9][0-1][0-9][0-3][0-9]$,_,2,,yyyyMMdd,yyyyMMdd,N,
+^access_lvis.log_201[2-9][0-1][0-9][0-3][0-9]$,_,2,,yyyyMMdd,yyyyMMdd,N,
+^access_lvisdev.log_201[2-9][0-1][0-9][0-3][0-9]$,_,2,,yyyyMMdd,yyyyMMdd,N,
+^access_vmis_test.log_201[2-9][0-1][0-9][0-3][0-9]$,_,2,,yyyyMMdd,yyyyMMdd,N,
+
+
+^error.log_201[2-9][0-1][0-9][0-3][0-9]$,_,2,,yyyyMMdd,yyyyMMdd,Y,
+^error_bmis.log_201[2-9][0-1][0-9][0-3][0-9]$,_,2,,yyyyMMdd,yyyyMMdd,Y,
+^error_cmis.log_201[2-9][0-1][0-9][0-3][0-9]$,_,2,,yyyyMMdd,yyyyMMdd,Y,
+^error_lvis.log_201[2-9][0-1][0-9][0-3][0-9]$,_,2,,yyyyMMdd,yyyyMMdd,Y,
+^error_lvisdev.log_201[2-9][0-1][0-9][0-3][0-9]$,_,2,,yyyyMMdd,yyyyMMdd,N,
+^error_vmis_test.log_201[2-9][0-1][0-9][0-3][0-9]$,_,2,,yyyyMMdd,yyyyMMdd,N,
+
+^access.log_[0-1][0-9][0-3][0-9]201[2-9]$,_,2,,MMddyyyy,yyyyMMdd,N,
+^error.log_[0-1][0-9][0-3][0-9]201[2-9]$,_,2,,MMddyyyy,yyyyMMdd,Y,
+
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,bmiswas1
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,cmiswas1
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,lviswas1
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,vmiswas1
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,unitywas1
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,bmiswas2
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,cmiswas2
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,lviswas2
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,vmiswas2
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,unitywas2
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,bmiswas3
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,cmiswas3
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,lviswas3
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,vmiswas3
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,unitywas3
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,bmiswas4
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,cmiswas4
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,lviswas4
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,vmiswas4
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,unitywas4
+
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9]_(\d.*?).log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,vmiseai1
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9]_(\d.*?).log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,vmiseai2
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,vmiseai3
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,vmiseai4
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,vmiseai5
+
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9]_(\d.*?).log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,vpotwas1
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,biz
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,dDIMS
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9]_(\d.*?).log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,maker
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9]_(\d.*?).log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,vpotwas2
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,biz
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,dDIMS
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9]_(\d.*?).log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,maker
+
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd,Y,dwwas
+
+

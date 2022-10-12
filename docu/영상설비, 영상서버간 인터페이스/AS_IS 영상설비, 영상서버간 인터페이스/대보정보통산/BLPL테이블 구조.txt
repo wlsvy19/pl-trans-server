@@ -1,0 +1,79 @@
+/***********************************************************************************/
+/* Master BL */
+/***********************************************************************************/
+use tves
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[MasterBL]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[MasterBL]
+GO
+CREATE TABLE [dbo].[MasterBL] (
+	[CarNum] [nchar] (12) COLLATE Korean_Wansung_CI_AS NOT NULL,
+	[NonPayment] varchar(09) COLLATE Korean_Wansung_CI_AS NOT NULL,
+	[NonPaymentCnt] varchar(05) COLLATE Korean_Wansung_CI_AS NOT NULL,
+	[Code] [nchar] (2) COLLATE Korean_Wansung_CI_AS NOT NULL ,
+	[Handle] varchar(1)  COLLATE Korean_Wansung_CI_AS NOT NULL,		/*입력:1, 수정:2, 삭제:3 */
+	[Dumy] [varchar] (1) COLLATE Korean_Wansung_CI_AS
+) ON [PRIMARY]
+
+GO
+
+CREATE 
+  INDEX [MasterBL_INDEX] ON [dbo].[MasterBL] ([CarNum])
+GO
+
+CREATE UNIQUE 
+  INDEX [MasterBL_INDEX] ON [dbo].[MasterBL] ([CarNum])
+WITH
+    IGNORE_DUP_KEY
+    ,DROP_EXISTING
+ON [PRIMARY]
+GO
+
+
+
+
+/***********************************************************************************/
+/* Master PL Table */
+/***********************************************************************************/
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[MasterPL]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[MasterPL]
+go
+
+CREATE TABLE [dbo].[MasterPL] (
+	[CarNum] [varchar] (12) COLLATE Korean_Wansung_CI_AS NOT NULL,
+	[PROC_CODE] [varchar] (2) COLLATE Korean_Wansung_CI_AS,
+	[PROC_GUBUN] [varchar] (1) COLLATE Korean_Wansung_CI_AS
+) ON [PRIMARY]
+GO
+
+
+ALTER TABLE [dbo].[MasterPL] ADD 
+	CONSTRAINT [pk_MasterPL] PRIMARY KEY  CLUSTERED 
+	(
+		[CarNum]
+	)  ON [PRIMARY] 
+GO
+
+
+
+
+/**************MTSTPL(소형화물할인) TABLE 생성 ****************************/
+ USE Tves
+GO
+
+
+CREATE TABLE [dbo].[MTSTPL] (
+	[Car_No] [nvarchar] (9) COLLATE Korean_Wansung_CI_AS NOT NULL ,
+	[Proc_Type] [char] (2) COLLATE Korean_Wansung_CI_AS NOT NULL
+) ON [PRIMARY]
+GO
+
+CREATE CLUSTERED INDEX [idx_MTSTPL] ON [dbo].[MTSTPL] ([Car_No])
+GO
+
+ALTER TABLE [dbo].[MTSTPL] ADD  CONSTRAINT [MTSTPL_Unique] UNIQUE NONCLUSTERED 
+(
+	[Car_No]
+) ON [PRIMARY]
+GO

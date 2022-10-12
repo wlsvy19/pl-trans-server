@@ -1,0 +1,170 @@
+Nov 17, 2020 8:07:04 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /Users/demo860/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+Nov 17, 2020 8:07:05 PM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8080
+Nov 17, 2020 8:07:05 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 1224 ms
+Nov 17, 2020 8:07:05 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Nov 17, 2020 8:07:05 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.53
+Nov 17, 2020 8:07:05 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Nov 17, 2020 8:07:06 PM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8080
+Nov 17, 2020 8:07:06 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Nov 17, 2020 8:07:06 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/120  config=null
+Nov 17, 2020 8:07:06 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 638 ms
+Nov 17, 2020 8:15:33 PM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8080
+Nov 17, 2020 8:15:35 PM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Nov 17, 2020 8:15:35 PM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8080
+Nov 17, 2020 8:21:21 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /Users/demo860/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+Nov 17, 2020 8:21:22 PM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8080
+Nov 17, 2020 8:21:22 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 1278 ms
+Nov 17, 2020 8:21:22 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Nov 17, 2020 8:21:22 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.53
+Nov 17, 2020 8:21:22 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Nov 17, 2020 8:21:23 PM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8080
+Nov 17, 2020 8:21:23 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Nov 17, 2020 8:21:23 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/23  config=null
+Nov 17, 2020 8:21:23 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 590 ms
+Nov 17, 2020 8:28:17 PM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8080
+Nov 17, 2020 8:28:18 PM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Nov 17, 2020 8:28:18 PM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8080
+Nov 17, 2020 8:32:50 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /Users/demo860/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+Nov 17, 2020 8:32:50 PM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8080
+Nov 17, 2020 8:32:50 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 1301 ms
+Nov 17, 2020 8:32:51 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Nov 17, 2020 8:32:51 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.53
+Nov 17, 2020 8:32:51 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Nov 17, 2020 8:32:51 PM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8080
+Nov 17, 2020 8:32:51 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Nov 17, 2020 8:32:51 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/33  config=null
+Nov 17, 2020 8:32:51 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 552 ms
+Nov 17, 2020 8:33:24 PM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8080
+Nov 17, 2020 8:33:25 PM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Nov 17, 2020 8:33:25 PM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8080
+Nov 17, 2020 8:38:59 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /Users/demo860/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+Nov 17, 2020 8:39:00 PM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8080
+Nov 17, 2020 8:39:00 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 1307 ms
+Nov 17, 2020 8:39:00 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Nov 17, 2020 8:39:00 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.53
+Nov 17, 2020 8:39:00 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Nov 17, 2020 8:39:01 PM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8080
+Nov 17, 2020 8:39:01 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Nov 17, 2020 8:39:01 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/35  config=null
+Nov 17, 2020 8:39:01 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 759 ms
+Nov 17, 2020 8:44:28 PM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8080
+Nov 17, 2020 8:44:30 PM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Nov 17, 2020 8:44:30 PM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8080
+Nov 17, 2020 8:52:48 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /Users/demo860/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+Nov 17, 2020 8:52:49 PM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8080
+Nov 17, 2020 8:52:49 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 1199 ms
+Nov 17, 2020 8:52:49 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Nov 17, 2020 8:52:49 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.53
+Nov 17, 2020 8:52:49 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Nov 17, 2020 8:52:50 PM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8080
+Nov 17, 2020 8:52:50 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Nov 17, 2020 8:52:50 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/75  config=null
+Nov 17, 2020 8:52:50 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 1539 ms
+Nov 17, 2020 8:53:11 PM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8080
+Nov 17, 2020 8:53:12 PM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Nov 17, 2020 8:53:12 PM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8080
+Nov 17, 2020 8:54:24 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /Users/demo860/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+Nov 17, 2020 8:54:25 PM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8080
+Nov 17, 2020 8:54:25 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 1234 ms
+Nov 17, 2020 8:54:25 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Nov 17, 2020 8:54:25 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.53
+Nov 17, 2020 8:54:25 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Nov 17, 2020 8:54:26 PM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8080
+Nov 17, 2020 8:54:26 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Nov 17, 2020 8:54:26 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/20  config=null
+Nov 17, 2020 8:54:26 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 520 ms
+Nov 17, 2020 9:09:58 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /Users/demo860/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+Nov 17, 2020 9:09:58 PM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8080
+Nov 17, 2020 9:09:58 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 733 ms
+Nov 17, 2020 9:09:58 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Nov 17, 2020 9:09:58 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.53
+Nov 17, 2020 9:09:58 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Nov 17, 2020 9:09:59 PM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8080
+Nov 17, 2020 9:09:59 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Nov 17, 2020 9:09:59 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/18  config=null
+Nov 17, 2020 9:09:59 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 473 ms

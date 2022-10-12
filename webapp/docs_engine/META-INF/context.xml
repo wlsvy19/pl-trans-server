@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Context>
+
+    <!-- Default set of monitored resources -->
+    <!--   url="jdbc:oracle:thin:@EBROTHERDB:15021:ebrother"   -->
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+	<Resource name="jdbc_wn7dev" auth="Container"
+	   type="javax.sql.DataSource"
+	   driverClassName="oracle.jdbc.driver.OracleDriver"
+		url="jdbc:oracle:thin:@wn50dev74:15021:ebrother"
+	   username="wooribank"
+	   password="ccmedia"
+	   maxActive="8"
+	   maxIdle="4"
+	   maxWait="-1"
+	   defaultAutoCommit="false" />
+
+</Context>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Packaging Generator" default="_packaging_generation_">
+
+	<target name="_packaging_generation_" depends="N65540">
+	</target>
+
+	<target name="N65540" description="gen ...">
+
+		<delete file="dist/jar/eBrotherTrans_20200814.jar"/>
+		<jar destfile="dist/jar/eBrotherTrans_20200814.jar">
+		<zipfileset dir="webapp/docs_engine/WEB-INF/classes" includes="**/*"/>
+		</jar>
+		<copy file="dist/jar/eBrotherTrans_20200814.jar"
+			tofile="dist/apache-tomcat-6.0.53/lib/eBrotherTrans_20200814.jar"/>
+		<copy file="dist/jar/eBrotherTrans_20200814.jar"
+			tofile="webapp/docs_engine/WEB-INF/lib/eBrotherTrans_20200814.jar"/>
+
+	</target>
+
+</project>

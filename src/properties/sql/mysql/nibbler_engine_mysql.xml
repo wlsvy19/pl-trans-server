@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="engine">
+
+	<typeAlias alias="engine" type="com.eBrother.wutil.ZValue"/>
+	<typeAlias  alias="integer" type="java.lang.Integer"/>
+	<typeAlias  alias="string" type="java.lang.String"/>
+	<typeAlias  alias="object" type="java.lang.Object"/>
+
+	<select id="statGetCnt" resultClass="engine" parameterClass="engine" >
+		
+		select count(*) cnt
+		from rt_log_st_base
+		where 1 = 1
+		and svr_grp_cd = #svr_grp_cd#
+		and log_svr_id = #log_svr_id#
+		and inst_id = #inst_id#
+		and ymd = #ymd#
+		and hr = #hr#
+		and mi = #mi#
+		<isNotEmpty prepend="" property="wk_st" > and wk_st =  #wk_st# </isNotEmpty>
+	</select>
+
+	<insert id="statInsert" parameterClass="engine" >
+		insert into rt_log_st_base ( lst_chg_dtm,  occ_dtm, svr_grp_cd, log_svr_id, inst_id, wk_st, ymd, hr, mi, log_cnt, log_sz, ip_cnt )
+		values ( NOW(), str_to_date(  concat (#ymd#, #hr#,#mi# ), '%Y%m%d%H%i'), #svr_grp_cd#, #log_svr_id#, #inst_id#, #wk_st#, #ymd#, #hr#, #mi#, #log_cnt#, #log_sz#, #ip_cnt# ) 
+
+	</insert>	
+
+	<update id="statUpdate" parameterClass="engine" >
+		
+		update rt_log_st_base
+		set svr_grp_cd = #svr_grp_cd#, lst_chg_dtm = NOW()
+		<isNotEmpty prepend="" property="occ_dtm" > , occ_dtm = #occ_dtm# </isNotEmpty>
+		<isNotEmpty prepend="" property="log_cnt" > , log_cnt = log_cnt + #log_cnt# </isNotEmpty>
+		<isNotEmpty prepend="" property="log_sz" > , log_sz = log_sz + #log_sz# </isNotEmpty>
+		<isNotEmpty prepend="" property="ip_cnt" > , ip_cnt = #ip_cnt# </isNotEmpty>
+		where  1 = 1
+		and svr_grp_cd = #svr_grp_cd#
+		and log_svr_id = #log_svr_id#
+		and inst_id = #inst_id#
+		and ymd = #ymd#
+		and hr = #hr#
+		and mi = #mi#
+		<isNotEmpty prepend="" property="wk_st" > and wk_st =  #wk_st# </isNotEmpty>
+	</update>
+	
+</sqlMap>
+

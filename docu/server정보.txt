@@ -1,0 +1,100 @@
+
+보내는사람 : 이성범 <sungbum@neighbor21.co.kr>
+
+
+
+    받는사람 : 김태연 <vsnet@straffic.co.kr>
+
+
+
+    보낸 날짜 : 2020-11-12 13:50:09
+
+
+    제목 : DB정보 접속 정보 보내드립니다.
+
+
+    공통
+    database : imsdb
+    username : ims
+    password : !new1234
+    port : 3306
+
+    수도권 본부 1
+    ip : 197.214.8.161
+
+    수도권 본부 2
+    ip : 197.214.8.162
+
+    수도권 본부 3
+    ip : 197.214.8.163
+
+    강원본부
+    ip : 197.24.8.153
+
+    대전충청본부
+    ip : 197.134.8.153
+
+    광주전남본부
+    ip : 197.184.8.153
+
+    대구경북본부
+    ip : 197.54.8.153
+
+    부산경남본부
+    ip : 197.74.8.153
+
+    전북본부
+    ip : 197.174.8.153
+
+    충북본부
+    ip : 197.124.8.153
+
+
+
+    Date: 2020/11/12 10:01:49
+    From: "이성범" <sungbum@neighbor21.co.kr>
+    To: "김태연" <vsnet@straffic.co.kr>
+    Subject: RE: Carno.txt I/F 사양 송부합니다.
+
+
+
+    /* 코드 참조
+    pctr_clss_cd 11 차로전면
+    pctr_clss_cd 12 차로후면
+    pctr_clss_cd 13 차로확정
+    */
+
+    /* interface 1.1.6 , 1.1.7 , 1.2.6 대상 테이블 */
+    통합영상관리_영상수집축중명세 t_iima_pgthr_axis01p1
+    통합영상관리_영상수집하이패스명세 t_iima_pgthr_hipas01p1
+    통합영상관리_영상수집TCS명세 t_iima_pgthr_tcs01p1
+    ;
+
+    /* 영상수집미납블랙리스트명세 */
+    SELECT *
+    FROM T_IIMA_PGTHR_TNBL01P1 A
+    WHERE 1 = 1
+    AND A.WORK_DATES >= '20201112' AND A.WORK_DATES <= '20201112'
+    ORDER BY A.FSTTM_RGST_DTTM DESC
+    LIMIT 20
+    ;
+
+    /* 경차 PL */
+    /*통합영상관리_영상재인식명세 T_IIMA_PCTR_RRECG01P1 */
+    /*통합영상관리_경차포지티브리스트기본 t_iima_smcar_pl01m1 */
+    SELECT A.* , C.*
+    FROM T_IIMA_PCTR_RRECG01P1 A JOIN t_iima_smcar_pl01m1 C ON A.RPCS_DTRM_VHNO = C.PROS_VHNO
+    WHERE 1=1
+    AND A.WORK_DATES >= '20201112' AND A.WORK_DATES <= '20201112'
+    LIMIT 20
+    ;
+
+    /*화물차 PL */
+    /*통합영상관리_영상재인식명세 T_IIMA_PCTR_RRECG01P1 */
+    /*통합영상관리_소형화물차포지티브리스트기본 t_iima_sfgcr_pl01m1 */
+    SELECT A.* , C.*
+    FROM T_IIMA_PCTR_RRECG01P1 A JOIN t_iima_sfgcr_pl01m1 C ON A.RPCS_DTRM_VHNO = C.PROS_VHNO
+    WHERE 1=1
+    AND A.WORK_DATES >= '20201112' AND A.WORK_DATES <= '20201112'
+    LIMIT 20
+    ;

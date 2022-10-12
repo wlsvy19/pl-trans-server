@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+<!-- 
+  	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"> 
+		<property name="driverClassName">
+			<value>oracle.jdbc.driver.OracleDriver</value>
+		</property>  
+		<property name="url" value="jdbc:oracle:thin:@wn50dev74:15021:ebrother"/>
+		<property name="username" value="ecmuser"/>
+		<property name="password" value="ecmconuser"/>
+		<property name="maxActive">
+			<value>100</value>
+		</property>
+		<property name="maxIdle">
+			<value>50</value>
+		</property>	
+		<property name="maxWait">
+			<value>10000</value>
+		</property>		 
+	</bean>
+ -->
+  	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"> 
+		<property name="driverClassName">
+			<value>org.apache.derby.jdbc.EmbeddedDriver</value>
+		</property>  
+		<property name="url" value="jdbc:derby:TransDB;create=true"/>
+	</bean>
+
+	<bean id="methodNameResolver" class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+		<property name="paramName">
+			<value>cmd</value>
+		</property>
+		<property name="defaultMethodName">
+			<value>runvoid</value>
+		</property>
+	</bean>
+	
+	<bean id="restController" class="com.eBrother.baas.common.control.RestController">
+		<property name="restService" ref="restService" />
+		<property name="methodNameResolver" ref="methodNameResolver" />
+	</bean>
+
+	<bean id="restService" class="com.eBrother.baas.common.service.impl.RestServiceImpl">
+		<property name="restDAO">
+			<ref local="restDAO"/>
+		</property>	
+	</bean>
+	
+	<bean id="restDAO" class="com.eBrother.baas.common.dao.impl.RestDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="restDAOSqlMapClient" />
+		</property>
+	</bean>	
+
+	<bean id="lobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler" lazy-init="true" />
+ 	<bean id="restDAOSqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocations">
+            <list>
+                <value>D:/workspace_nibbler/NibblerTrans4/webapp/docs_engine/WEB-INF/config/sqlmap_trans.xml</value> 
+            </list>
+        </property>	 
+		<property name="dataSource" ref="dataSource"/> 
+		<property name="lobHandler" ref="lobHandler"/>    
+	</bean>
+
+		
+</beans>
+

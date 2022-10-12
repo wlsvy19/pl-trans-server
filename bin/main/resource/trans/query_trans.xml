@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="trans">
+  
+	<typeAlias  alias="zValue" type="com.eBrother.baas.common.model.ZValue"/> 
+	<typeAlias  alias="integer" type="java.lang.Integer"/>
+	<typeAlias  alias="string" type="java.lang.String"/>
+	<typeAlias  alias="object" type="java.lang.Object"/> 
+
+
+	<select id="listtname" parameterClass="zValue" resultClass="zValue" remapResults="true">
+	
+		SELECT 1 FROM SYSIBM.SYSDUMMY1
+		
+	</select>
+
+
+	<statement id="delete.note">
+	BEGIN
+		<iterate property="json_param.note_id_list">
+			delete from rpt_note where note_id = #json_param.note_id_list[]#;
+		</iterate>
+		commit;
+	END;
+	</statement>
+
+	<select id="report.note" parameterClass="zValue" resultClass="zValue" remapResults="true">
+	SELECT *
+	FROM
+	(
+		SELECT rownum num_row, A.*
+		FROM
+		(
+			SELECT
+				note_id
+				,report_id
+				,user_id
+				,note_symd
+				,note_eymd
+				,note_desc
+		   		,count(*) over () cnt_row
+		   	FROM
+		   		rpt_note
+			where
+				1 = 1
+		   		<isNotEmpty property="note_id">
+		   		and note_id = #note_id#
+		   		</isNotEmpty>
+		   		<isNotEmpty property="report_id">
+		   		and report_id = #report_id#
+		   		</isNotEmpty>
+				<isNotEmpty property="search_word">
+					and lower(user_id) LIKE lower('%$search_word$%')
+				</isNotEmpty>
+		   	order by
+				note_id DESC
+		) A
+	)FR
+	WHERE
+		1=1
+		<isNotEmpty property="from_num_row">
+			and num_row &gt;= #from_num_row# 
+		</isNotEmpty>
+		<isNotEmpty property="to_num_row">
+			and num_row &lt;= #to_num_row# 
+		</isNotEmpty>
+	</select>
+	
+	
+</sqlMap>

@@ -1,0 +1,19 @@
+
+
+
+OSP_BASE=/export/home/asp/wn/server
+OSP_PRO=/export/home/asp/wn/project
+
+
+JAVA_HOME=/export/home/asp/wn/3rd_party/java
+JAVA=$JAVA_HOME/bin/java
+
+ORACLE_HOME=/export/home/oracle/app/oracle/product/11.2.0/dbhome_2
+export ORACLE_HOME
+ORACLE_SID=ebrother
+export ORACLE_SID
+NLS_LANG=American_America.KO16MSWIN949
+export NLS_LANG
+DB_BIN=$ORACLE_HOME/bin
+ORACLE_LOADER=$ORACLE_HOME/bin/sqlldr
+ORACLE_SQLPLUS=$ORACLE_HOME/bin/sqlplus

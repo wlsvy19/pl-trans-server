@@ -1,0 +1,75 @@
+
+
+-- ip : 대상 서버 IP
+-- file type : ACCESS - access log file, WAS - was log, EB - ebrother log, ERR - error log file.
+-- send_type : R - real time, B - batch
+-- isfinish : Y - end, N - no
+-- file_server : 파일의 server 위치
+-- file_client : 
+
+create sequence seq_trans start with 1;
+
+create table rptrans_filelog (
+	seq_trans	number(10,0)
+	,	client_ip	varchar2(20)
+	, file_server	varchar2(512)
+	, file_client varchar2(512)
+	, file_ymd	char(8)
+	, file_hms	char(6)
+	, file_nm		varchar2(512)
+	, file_size	number(10,0)
+	, file_lines	number(10,0)
+	, file_type	varchar2(10)
+	, send_type	char(1)
+	, isfinish	char(1)
+	, admindate	char(14)
+);
+
+create unique index idx_translog on rptrans_filelog ( client_ip, file_server, admindate );
+
+-- 최종 파일 전송 로그
+create table rptrans_filehist (
+	seq_trans	number(10,0)
+	,	client_ip	varchar2(20)
+	, file_server	varchar2(512)
+	, file_client varchar2(512)
+	, file_ymd	char(8)
+	, file_hms	char(6)
+	, file_nm		varchar2(512)
+	, file_size	number(10,0)
+	, file_lines	number(10,0)
+	, file_type	varchar2(10)
+	, send_type	char(1)
+	, admindate	char(14)
+);
+
+create unique index idx_transhist on rptrans_filehist ( client_ip, file_server );
+
+
+
+create sequence seq_parser start with 1;
+
+
+create table rptrans_parserlog (
+	seq_parser	number(10,0)
+	, seq_trans	number(10,0)
+	, trans_file	varchar2(512)
+	, parser_file	varchar2(512)
+	, parser_type	varchar2(10)
+	, parser_size		number(10,0)
+	, parser_lines number(10,0)
+	, admindate	char(14)
+);
+
+
+create table rptrans_parserhist (
+	seq_parser	number(10,0)
+	, seq_trans	number(10,0)
+	, trans_file	varchar2(512)
+	, parser_file	varchar2(512)
+	, parser_type	varchar2(10)
+	, parser_size	number(10,0)
+	, parser_lines number(10,0)
+	, admindate	char(14)
+);
+

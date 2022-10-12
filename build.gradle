@@ -1,0 +1,64 @@
+plugins {
+    id 'java'
+}
+
+group 'com.eBrother'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    jcenter()
+    mavenCentral()
+    maven { url 'https://dl.bintray.com/kotlin/exposed' }
+    maven { url 'https://jitpack.io' }
+    maven { url 'https://ci-artifactory.corda.r3cev.com/artifactory/corda-releases' }
+    maven { url 'https://repo.gradle.org/gradle/libs-releases-local' }
+}
+
+dependencies {
+
+    // https://mvnrepository.com/artifact/net.java.dev.jna/jna
+    compile group: 'net.java.dev.jna', name: 'jna', version: '5.6.0'
+
+    // https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
+
+    compile fileTree(dir: './dist/apache-tomcat-6.0.53/lib', include: ['*.jar'])
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+sourceSets {
+    main{
+        java {
+            srcDir 'src/'
+            srcDir 'src_hipass/'
+            srcDir 'src_image/'
+            java.outputDir = file('webapp/docs_engine/WEB-INF/classes')
+        }
+        resources {
+            srcDir 'resources'
+            resources.outputDir = file('webapp/docs_engine/WEB-INF/classes')
+
+        }
+    }
+}
+
+jar {
+
+}
+
+task copyJar(type: Copy) {
+    from jar // here it automatically reads jar file produced from jar task
+    into './dist/apache-tomcat-6.0.53/lib'
+    into './dist/image/lib'
+}
+
+task runCmd ( type: Exec ) {
+    commandLine 'sh', '-c', './dist/apache-tomcat-6.0.53/bin/catalina.sh run'
+}
+
+copyJar.dependsOn jar
+
+runCmd.dependsOn copyJar
+

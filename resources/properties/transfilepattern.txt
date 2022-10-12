@@ -1,0 +1,16 @@
+
+# 1st  : pattern
+# 2nd : date delimiter
+# 3rd : # of date column.
+##        if 3rd is F, then set last file modifed time. by yyyyMMddHHmmss
+# 4rd : date format - JAVA simpleFormat 형식
+##	// SimpleDateFormat fmt2 = new SimpleDateFormat("HHmmss");
+##  // SimpleDateFormat fmt3 = new SimpleDateFormat("yyyy/MM/dd");
+## 201 --> 2012 ~ 2019 년. 이것을 넘어설 가능성이 있을까요 ? 와 ... 우리 시스템 대단하네.
+^access.log_201[2-9][0-1][0-9][0-3][0-9]$,_,2,,yyyyMMdd,yyyyMMdd,\[([\w:/]+\s[+\-]\d{4})\],dd/MMM/yyyy:HH:mm:ss Z
+^error.log_201[2-9][0-1][0-9][0-3][0-9]$,_,2,,yyyyMMdd,yyyyMMdd
+^access.log_[0-1][0-9][0-3][0-9]201[2-9]$,_,2,,MMddyyyy,yyyyMMdd,\[([\w:/]+\s[+\-]\d{4})\],dd/MMM/yyyy:HH:mm:ss Z
+^error.log_[0-1][0-9][0-3][0-9]201[2-9]$,_,2,,MMddyyyy,yyyyMMdd
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9].log$,_,2,.log,yyyyMMdd,yyyyMMdd
+^JeusServer_201[2-9][0-1][0-9][0-3][0-9]_(\d.*?).log$,_,2,.log,yyyyMMdd_HH,yyyyMMddHH
+^alert_(.*?).log(.*?),.,3,,yyyyMMdd,yyyyMMdd

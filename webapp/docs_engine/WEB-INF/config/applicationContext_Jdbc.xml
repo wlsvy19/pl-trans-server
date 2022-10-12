@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+
+	<!-- Create DB Connection -->
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<value>WEB-INF/config/config.properties</value>
+		</property>
+	</bean>
+
+	<!-- 
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+	       <property name="jndiName" value="java:comp/env/jdbc_wn7dev"/>
+	</bean>	
+	 -->
+  	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"> 
+		<property name="driverClassName">
+			<value>oracle.jdbc.driver.OracleDriver</value>
+		</property>  
+		<property name="url" value="jdbc:oracle:thin:@wn50dev74:15021:ebrother"/>
+		<property name="username" value="ecmuser"/>
+		<property name="password" value="ecmconuser"/>
+		<property name="maxActive">
+			<value>100</value>
+		</property>
+		<property name="maxIdle">
+			<value>50</value>
+		</property>	
+		<property name="maxWait">
+			<value>10000</value>
+		</property>		 
+	</bean>
+	 
+  	<bean id="wepaDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"> 
+		<property name="driverClassName">
+			<value>oracle.jdbc.driver.OracleDriver</value>
+		</property>  
+		<property name="url" value="jdbc:oracle:thin:@wn50dev74:15021:ebrother"/>
+		<property name="username" value="ecmuser"/>
+		<property name="password" value="ecmconuser"/>
+		<property name="maxActive">
+			<value>100</value>
+		</property>
+		<property name="maxIdle">
+			<value>50</value>
+		</property>	
+		<property name="maxWait">
+			<value>10000</value>
+		</property>		 
+	</bean>
+	
+<!--  meta 등 구형 SPRING 개발에 따른 설정 부분. 나중에 시간있을때 삭제한다. 반듯이 -->
+	<bean id="myJdbcDaoSupport" abstract="true" class="com.eBrother.meta.common.dao.MyJdbcDaoSupport">
+		<property name="dataSource">
+			<ref local="dataSource"/>
+		</property>		
+	</bean>
+<!--  meta 등 구형 SPRING 개발에 따른 설정 부분. 나중에 시간있을때 삭제한다. 반듯이 -->
+		
+ 
+	<!-- Create DAOs -->
+
+</beans>
